@@ -1,0 +1,12 @@
+* text=auto
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.js text eol=lf
+*.go text eol=lf
+*.java text eol=lf
+*.cs text eol=lf
+*.cpp text eol=lf
+*.ps1 text eol=crlf
+*.png binary
+

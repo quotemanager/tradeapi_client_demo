@@ -1,0 +1,47 @@
+name: Examples build and mock tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  examples:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+          cache-dependency-path: examples/java/pom.xml
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.27.x'
+          cache: false
+      - name: Build C++
+        run: |
+          cmake -S examples/cpp -B build/cpp -A x64 -DDEMO_BUILD_TEST_FIXTURES=ON
+          cmake --build build/cpp --config Release
+      - name: Build Csharp
+        run: dotnet build examples/csharp -c Release -o build/csharp
+      - name: Build Java
+        run: mvn -B -f examples/java/pom.xml package
+      - name: Build Go
+        run: go build -o build/go/tradeapi-client-demo.exe ./examples/go/main.go
+      - name: Mock tests only
+        env:
+          DEMO_REQUIRED_RUNNERS: python,nodejs,cpp,csharp,java,go
+        run: python -m unittest discover -s tests -v
+      - name: Check public upload candidates
+        run: python tools/check_public_files.py

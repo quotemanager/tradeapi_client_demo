@@ -1,0 +1,45 @@
+{
+  "tdx": {
+    "base_url": "http://127.0.0.1:18769",
+    "url_env": "TRADEAPI_TDX_URL",
+    "token_env": "TRADEAPI_TDX_TOKEN",
+    "queries": {
+      "funds": "/v1/queries/funds",
+      "holdings": "/v1/queries/holdings",
+      "orders": "/v1/queries/orders",
+      "trades": "/v1/queries/trades",
+      "cancelable_orders": "/v1/queries/cancelable_orders",
+      "shareholders": "/v1/queries/shareholders"
+    },
+    "commands": {
+      "health": {"method": "GET", "path": "/health", "input": "none", "live": false},
+      "status": {"method": "GET", "path": "/v1/status", "input": "none", "live": false},
+      "order": {"method": "POST", "path": "/v1/orders", "input": "file", "live": true},
+      "cancel": {"method": "POST", "path": "/v1/cancellations", "input": "file", "live": true},
+      "result": {"method": "GET", "path": "/v1/actions/", "input": "id-path", "live": false}
+    }
+  },
+  "ths": {
+    "base_url": "http://127.0.0.1:18768",
+    "url_env": "TRADEAPI_THS_URL",
+    "token_env": "TRADEAPI_THS_TOKEN",
+    "queries": {
+      "funds": "/query/funds",
+      "holdings": "/query/positions",
+      "orders": "/query/orders",
+      "trades": "/query/deals",
+      "cancelable_orders": "/query/cancelable"
+    },
+    "commands": {
+      "health": {"method": "GET", "path": "/health", "input": "none", "live": false},
+      "status": {"method": "GET", "path": "/session/status", "input": "none", "live": false},
+      "preview-order": {"method": "POST", "path": "/orders/preview", "input": "file", "live": false},
+      "preview-cancel": {"method": "POST", "path": "/cancels/preview", "input": "file", "live": false},
+      "poll-order": {"method": "POST", "path": "/orders/preview", "input": "id-body", "live": false},
+      "poll-cancel": {"method": "POST", "path": "/cancels/preview", "input": "id-body", "live": false},
+      "submit-order": {"method": "POST", "path": "/orders/submit", "input": "id-body", "live": true},
+      "submit-cancel": {"method": "POST", "path": "/cancels/submit", "input": "id-body", "live": true},
+      "result": {"method": "GET", "path": "/actions/", "input": "id-path", "live": false}
+    }
+  }
+}

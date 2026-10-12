@@ -1,0 +1,6 @@
+LIBRARY mock_tradeapi
+EXPORTS
+    TradeApi_Initialize
+    TradeApi_Call
+    TradeApi_GetLastResponse
+    TradeApi_GetLastHttpStatus

@@ -1,0 +1,8 @@
+{
+  "request_id": "REPLACE_WITH_NEW_REQUEST_ID",
+  "account_variant": "normal",
+  "side": "buy",
+  "security_code": "YOUR_SECURITY_CODE",
+  "price": "10.00",
+  "quantity": 100
+}
