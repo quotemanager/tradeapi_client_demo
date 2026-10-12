@@ -4,6 +4,10 @@ A 股程序化交易接口多语言接入示例。通过 **通达信客户端接
 
 支持 HTTP、Python SDK 和 DLL 接入，提供 Python、C++、C#、Java、Node.js、Go 六种语言的示例。适用于策略程序接入、交易工具开发及接口集成验证。
 
+产品介绍网站：[tradeapi.cc](https://tradeapi.cc/)。
+
+相关示例工程：[tradeapi 券商直连交易接口示例](https://github.com/quotemanager/tradeapi_demo)，演示由程序完成账户登录，通过 DLL 调用查询、委托和撤单。
+
 > 本仓库公开调用示例与用户文档，**不包含 TradeApi 运行包、官方客户端、账户授权文件或内部实现**。不是通达信或同花顺官方发布的产品，也不提供收益承诺。交易功能以运行包、兼容客户端及账户权限为准。
 
 ## 免费试用与接入咨询
